@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    overflow: hidden;
+}
+
+.game-container {
+    display: flex;
+    width: 800px;
+}
+
+.info-panel {
+    width: 250px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.game-area {
+    width: 550px;
+    height: 500px;
+    position: relative;
+    background: #e0f7fa;
+    border: 2px solid #000;
+    overflow: hidden;
+}
+
+#basket {
+    width: 80px;
+    height: 40px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: brown;
+    border-radius: 10px;
+    transition: left 0.1s ease-out;
+}
+
+.ingredient {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    font-size: 30px;
+    text-align: center;
+}
+
+ul li {
+    list-style: none;
+}
