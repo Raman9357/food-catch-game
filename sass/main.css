@@ -1,0 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s;
+}
+
+.play-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #26b451;
+  width: 100%;
+  height: 100vh;
+}
+.play-screen .container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play-screen .container .play .img-container {
+  width: 600px;
+  height: 400px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+@media screen and (max-width: 657px) {
+  .play-screen .container .play .img-container {
+    width: 100%;
+    height: 400px;
+  }
+}
+.play-screen .container .play .buttons {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.play-screen .container .play .buttons .margin-righ {
+  margin-right: 4rem;
+}
+.play-screen .container .play .buttons a {
+  text-decoration: none;
+  text-align: center;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  width: 150px;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 657px) {
+  .play-screen .container .play .buttons a {
+    width: 100px;
+  }
+}
+.play-screen .container .play .buttons a:active {
+  transform: scale(1.1);
+}/*# sourceMappingURL=main.css.map */

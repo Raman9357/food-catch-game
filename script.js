@@ -39,6 +39,10 @@ function startGame() {
     collectedIngredients.clear();
     activeIngredients = 0;
 
+    basketPosition = gameArea.clientWidth / 2;
+    basket.style.left = basketPosition + "px";
+    basketSpeed = 0;
+    keys = {};
     currentDish.ingredients.forEach(ing => {
         let li = document.createElement("li");
         li.textContent = foodImages[ing];
@@ -46,8 +50,8 @@ function startGame() {
     });
 
     spawnIngredient();
-    moveBasketSmoothly();
 }
+
 
 function spawnIngredient() {
     if (activeIngredients >= maxIngredientsOnScreen) {
@@ -127,15 +131,21 @@ function updateChecklist() {
     }
 }
 
+let isMoving = false;
+
 function moveBasketSmoothly() {
-    if (keys["ArrowLeft"] && basketPosition > 0) {
-        basketSpeed = Math.max(basketSpeed - 0.3, -2.5);
-    } else if (keys["ArrowRight"] && basketPosition < gameArea.clientWidth - basket.clientWidth) {
-        basketSpeed = Math.min(basketSpeed + 0.3, 2.5);
+    if (!keys["ArrowLeft"] && !keys["ArrowRight"]) {
+        isMoving = false;
+        return;
     }
-    // else {
-    //     basketSpeed *= 0.9;
-    // }
+
+    if (keys["ArrowLeft"] && basketPosition > 0) {
+        basketSpeed = -2.5;
+    } else if (keys["ArrowRight"] && basketPosition < gameArea.clientWidth - basket.clientWidth) {
+        basketSpeed = 2.5;
+    } else {
+        basketSpeed = 0;
+    }
 
     basketPosition += basketSpeed;
     basket.style.left = basketPosition + "px";
@@ -145,6 +155,10 @@ function moveBasketSmoothly() {
 
 document.addEventListener("keydown", (e) => {
     keys[e.key] = true;
+    if (!isMoving) {
+        isMoving = true;
+        moveBasketSmoothly();
+    }
 });
 
 document.addEventListener("keyup", (e) => {
