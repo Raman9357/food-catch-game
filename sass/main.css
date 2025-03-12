@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #26b451;
+  background-color: #0b8261;
   width: 100%;
   height: 100vh;
 }
@@ -59,4 +59,66 @@
 }
 .play-screen .container .play .buttons a:active {
   transform: scale(1.1);
+}
+
+.level-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b8261;
+  width: 100%;
+  height: 100vh;
+}
+.level-screen .container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.level-screen .container .level-select {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.level-screen .container .level a {
+  text-decoration: none;
+}
+.level-screen .container .level .cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.level-screen .container .level .cards .card {
+  background: #93d0ab;
+  height: 400px;
+  width: 280px;
+  border-radius: 26px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.level-screen .container .level .cards .card:hover {
+  scale: 1.05;
+}
+.level-screen .container .level .cards .card .image {
+  position: relative;
+}
+.level-screen .container .level .cards .card .image .heading {
+  width: 240px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0b8261;
+  padding: 10px;
+  color: #fff;
+  border-radius: 10px;
+  text-align: center;
+}
+.level-screen .container .level .cards .card .image img {
+  width: 100%;
+  max-width: 250px;
 }/*# sourceMappingURL=main.css.map */

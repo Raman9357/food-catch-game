@@ -5,34 +5,52 @@
     font-family: Arial, sans-serif;
 }
 
-body {
+
+
+/* body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
     overflow: hidden;
-}
+} */
 
 .game-container {
     display: flex;
+    align-items: center;
+    justify-content: center;
     width: 800px;
+
+    position: relative;
 }
 
 .info-panel {
-    width: 250px;
+
+    position: absolute;
+    width: 280px;
     padding: 10px;
     background: #fff;
-    border: 1px solid #ccc;
+    border: 10px solid #0b8261;
+    border-radius: 25px;
     text-align: left;
+
+    padding: 1rem;
+
+    margin-right: 1rem;
+
+    top: 0px;
+    right: -200px;
 }
 
 .game-area {
     width: 550px;
     height: 500px;
     position: relative;
-    background: #e0f7fa;
-    border: 2px solid #000;
+    background: #fff;
+    border: 10px solid #0b8261;
+
+    border-radius: 25px;
     overflow: hidden;
 }
 
@@ -46,6 +64,24 @@ body {
     background: brown;
     border-radius: 10px;
     transition: left 0.1s ease-out;
+
+    z-index: 100;
+
+    /* position: relative; */
+}
+
+.player {
+    position: relative;
+}
+
+.player img {
+    /* width: 100%; */
+    max-width: 195px;
+    position: absolute;
+    top: -60px;
+    left: -17px;
+
+    z-index: 100;
 }
 
 .ingredient {
@@ -59,4 +95,21 @@ body {
 
 ul li {
     list-style: none;
+}
+
+
+.game {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    background: url(./assets/game-bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }

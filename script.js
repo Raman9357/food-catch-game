@@ -109,7 +109,7 @@ function checkCatch(ingredient) {
         } else {
             score -= 5;
             scoreDisplay.textContent = score;
-            alert("Wrong ingredient! You lose points!");
+            // alert("Wrong ingredient! You lose points!");
         }
     }
 
@@ -126,7 +126,7 @@ function updateChecklist() {
     });
 
     if (collectedIngredients.size === currentDish.ingredients.length) {
-        alert(`You completed the ${currentDish.name}!`);
+        // alert(`You completed the ${currentDish.name}!`);
         startGame();
     }
 }
