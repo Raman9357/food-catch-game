@@ -5,6 +5,11 @@ const ingredientList = document.getElementById("ingredient-list");
 const collectedList = document.getElementById("collected-list");
 const scoreDisplay = document.getElementById("score");
 
+const panel = document.querySelector(".game-starter");
+const losePanel = document.querySelector(".lose-panel");
+const winPanel = document.querySelector(".win-panel");
+const playButton = document.querySelector("#play-game");
+
 let score = 0;
 let speed = 2.0;
 let collectedIngredients = new Set();
@@ -32,6 +37,7 @@ let maxIngredientsOnScreen = 5;
 let activeIngredients = 0;
 
 function startGame() {
+    panel.style.display = "none";
     currentDish = dishes[Math.floor(Math.random() * dishes.length)];
     dishName.textContent = currentDish.name;
     ingredientList.innerHTML = "";
@@ -111,6 +117,10 @@ function checkCatch(ingredient) {
             scoreDisplay.textContent = score;
             // alert("Wrong ingredient! You lose points!");
         }
+
+        if (score == 0) {
+            losePanel.style.display = "flex";
+        }
     }
 
     ingredient.remove();
@@ -127,7 +137,8 @@ function updateChecklist() {
 
     if (collectedIngredients.size === currentDish.ingredients.length) {
         // alert(`You completed the ${currentDish.name}!`);
-        startGame();
+        winPanel.style.display = "flex";
+        // startGame();
     }
 }
 
@@ -165,4 +176,17 @@ document.addEventListener("keyup", (e) => {
     keys[e.key] = false;
 });
 
-startGame();
+
+if (playButton && panel) {
+    playButton.addEventListener("click", startGame);
+}
+
+if (playButton && losePanel) {
+    playButton.addEventListener("click", startGame);
+}
+
+if (playButton && winPanel) {
+    playButton.addEventListener("click", startGame);
+}
+
+// startGame();

@@ -113,3 +113,138 @@ ul li {
     background-size: cover;
 
 }
+
+.game-starter {
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+}
+
+.game-starter .play {
+    width: 600px;
+    height: 600px;
+
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-starter .play button {
+    background-color: #0b8262;
+    border: 4px solid #ffffff;
+    color: #ffffff;
+    padding: 10px 3rem;
+
+    max-width: 250px;
+
+    border-radius: 16px;
+    font-size: 32px;
+
+    z-index: 5;
+
+    margin: 0 4rem;
+
+    cursor: pointer;
+}
+
+
+.lose-panel {
+    display: none;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+}
+
+.lose-panel .play {
+    width: 720px;
+    height: 400px;
+
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lose-panel .play button {
+    background-color: #0b8262;
+    border: 4px solid #ffffff;
+    color: #ffffff;
+    padding: 10px 3rem;
+
+    max-width: 250px;
+
+    border-radius: 16px;
+    font-size: 32px;
+
+    z-index: 5;
+
+    margin: 0 4rem;
+
+    cursor: pointer;
+}
+
+
+.win-panel {
+    z-index: 1000000;
+    display: none;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+}
+
+.win-panel .play {
+    width: 720px;
+    height: 400px;
+
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+}
+
+.win-panel .play h2 {
+    margin-bottom: 2rem;
+}
+
+.win-panel .play button {
+    background-color: #0b8262;
+    border: 4px solid #ffffff;
+    color: #ffffff;
+    padding: 10px 3rem;
+
+    max-width: 250px;
+
+    border-radius: 16px;
+    font-size: 28px;
+
+    z-index: 5;
+
+    margin: 0 4rem;
+
+    cursor: pointer;
+}
