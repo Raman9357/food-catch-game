@@ -19,14 +19,26 @@
 
         <div class="lose-panel">
             <div class="play">
-                <button id="play-game">Play</button>
+                <!-- <h2>You lost</h2> -->
+                <button id="play-game" onclick="window.location.href = './level.html'"><img
+                        src="./assets/images/try_again_button.png" alt=""></button>
+                <a href="./index.html"><img src="./assets/images/home_button.png" alt=""></a>
             </div>
         </div>
 
         <div class="win-panel">
             <div class="play">
-                <h2>You Completed the Dish</h2>
-                <button id="play-game">Play Again</button>
+                <div class="bg_img">
+                    <img src="./assets/images/youwin_rainbow.png" alt="">
+                </div>
+                <!-- <h2>You Completed the Dish</h2>
+                <button id="play-game">Play Again</button> -->
+
+                <div class="win_buttons">
+                    <a href="./game2.html"><img src="./assets/images/next_level.png" alt=""></a>
+                    <a href="./game1.html"><img src="./assets/images/try_again.png" alt=""></a>
+                    <a href="./index.html"><img class="home" src="./assets/images/home.png" alt=""></a>
+                </div>
             </div>
         </div>
 
@@ -51,7 +63,7 @@
         </div>
     </section>
 
-    <script src="./script.js"></script>
+    <script src="./script1.js"></script>
 
 </body>
 

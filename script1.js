@@ -9,6 +9,7 @@ const panel = document.querySelector(".game-starter");
 const losePanel = document.querySelector(".lose-panel");
 const winPanel = document.querySelector(".win-panel");
 const playButton = document.querySelector("#play-game");
+const goBackButton = document.querySelector("#play-game");
 
 let score = 0;
 let speed = 2.0;
@@ -17,16 +18,29 @@ let basketSpeed = 0;
 let basketPosition = gameArea.clientWidth / 2;
 let keys = {};
 
+let gameActive = false;
+
 const foodImages = {
-    Bun: "🟠",
-    L: "🥬",
-    T: "🍅",
-    C: "🧀",
-    D: "🍞",
+    Bun: "assets/images/carrots2.png",
+    A: "assets/images/lettuce1.png",
+    P: "assets/images/potatoes1.png",
+    C: "assets/images/cheese1.png",
+    D: "assets/images/garlic1.png",
+    // E: "assets/images/eggs2.png",
+    // F: "assets/images/onion1.png",
+    // G: "assets/images/spring_onion2.png",
+    // H: "assets/images/cucumber2.png",
+    // I: "assets/images/spinach1.png",
+    // J: "assets/images/rotten_cheese1.png",
+    // K: "assets/images/rotten_spinach1.png",
+    // L: "assets/images/rotten_potatotoes1.png",
+    // M: "assets/images/rotten_eggs.png",
+    // N: "assets/images/rotten_lettuce1.png",
+    // O: "assets/images/rotten_garlic1.png",
 };
 
 const dishes = [
-    { name: "Burger", ingredients: ["Bun", "L", "T", "C"] },
+    { name: "Carrot Rainbow", ingredients: ["Bun", "A", "P", "C"] },
     { name: "Pizza", ingredients: ["D", "C"] },
 ];
 
@@ -38,7 +52,11 @@ let activeIngredients = 0;
 
 function startGame() {
     panel.style.display = "none";
-    currentDish = dishes[Math.floor(Math.random() * dishes.length)];
+    winPanel.style.display = "none";
+    losePanel.style.display = "none";
+    gameActive = true;
+    // currentDish = dishes[Math.floor(Math.random() * dishes.length)];
+    currentDish = dishes[0];
     dishName.textContent = currentDish.name;
     ingredientList.innerHTML = "";
     collectedList.innerHTML = "";
@@ -51,7 +69,10 @@ function startGame() {
     keys = {};
     currentDish.ingredients.forEach(ing => {
         let li = document.createElement("li");
-        li.textContent = foodImages[ing];
+        let img = document.createElement("img");
+        img.src = foodImages[ing];
+        img.alt = ing;
+        li.appendChild(img);
         ingredientList.appendChild(li);
     });
 
@@ -60,6 +81,8 @@ function startGame() {
 
 
 function spawnIngredient() {
+
+    if (!gameActive) return;
     if (activeIngredients >= maxIngredientsOnScreen) {
         setTimeout(spawnIngredient, 1000);
         return;
@@ -68,16 +91,20 @@ function spawnIngredient() {
     const ingredients = Object.keys(foodImages);
     let ingredientType = ingredients[Math.floor(Math.random() * ingredients.length)];
 
-    let ingredient = document.createElement("div");
+    let ingredient = document.createElement("img");
     ingredient.classList.add("ingredient");
-    ingredient.textContent = foodImages[ingredientType];
+    ingredient.src = foodImages[ingredientType];
     ingredient.dataset.type = ingredientType;
+    ingredient.style.position = "absolute";
     ingredient.style.left = Math.random() * (gameArea.clientWidth - 40) + "px";
+    ingredient.style.top = "0px";
     gameArea.appendChild(ingredient);
 
     activeIngredients++;
 
     function fall() {
+
+        if (!gameActive) return;
         let topPosition = parseFloat(ingredient.style.top || 0);
         if (topPosition < gameArea.clientHeight - 50) {
             ingredient.style.top = topPosition + speed + "px";
@@ -90,6 +117,7 @@ function spawnIngredient() {
 
     setTimeout(spawnIngredient, 800);
 }
+
 
 function checkCatch(ingredient) {
     let basketRect = basket.getBoundingClientRect();
@@ -107,18 +135,14 @@ function checkCatch(ingredient) {
                 updateChecklist();
                 score += 10;
                 scoreDisplay.textContent = score;
-
-                // if (score % 50 === 0) {
-                //     speed += 0.2;
-                // }
             }
         } else {
             score -= 5;
             scoreDisplay.textContent = score;
-            // alert("Wrong ingredient! You lose points!");
         }
 
         if (score == 0) {
+            gameActive = false;
             losePanel.style.display = "flex";
         }
     }
@@ -131,20 +155,28 @@ function updateChecklist() {
     collectedList.innerHTML = "";
     collectedIngredients.forEach(ing => {
         let li = document.createElement("li");
-        li.textContent = foodImages[ing];
+        let img = document.createElement("img");
+        img.src = foodImages[ing];
+        li.appendChild(img);
         collectedList.appendChild(li);
     });
 
+
     if (collectedIngredients.size === currentDish.ingredients.length) {
-        // alert(`You completed the ${currentDish.name}!`);
+        gameActive = false;
         winPanel.style.display = "flex";
-        // startGame();
     }
 }
+
 
 let isMoving = false;
 
 function moveBasketSmoothly() {
+
+    if (!gameActive) {
+        isMoving = false;
+        return;
+    }
     if (!keys["ArrowLeft"] && !keys["ArrowRight"]) {
         isMoving = false;
         return;
@@ -164,6 +196,7 @@ function moveBasketSmoothly() {
     requestAnimationFrame(moveBasketSmoothly);
 }
 
+
 document.addEventListener("keydown", (e) => {
     keys[e.key] = true;
     if (!isMoving) {
@@ -176,7 +209,6 @@ document.addEventListener("keyup", (e) => {
     keys[e.key] = false;
 });
 
-
 if (playButton && panel) {
     playButton.addEventListener("click", startGame);
 }
@@ -188,5 +220,6 @@ if (playButton && losePanel) {
 if (playButton && winPanel) {
     playButton.addEventListener("click", startGame);
 }
+
 
 // startGame();

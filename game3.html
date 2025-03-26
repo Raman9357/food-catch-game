@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Catcher Game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <section class="game">
+
+        <div class="game-starter">
+            <div class="play">
+                <button id="play-game">Play</button>
+            </div>
+        </div>
+
+        <div class="lose-panel">
+            <div class="play">
+                <!-- <h2>You lost</h2> -->
+                <button id="play-game" onclick="window.location.href = './level.html'"><img
+                        src="./assets/images/try_again_button.png" alt=""></button>
+                <a href="./index.html"><img src="./assets/images/home_button.png" alt=""></a>
+            </div>
+        </div>
+
+        <div class="win-panel">
+            <div class="play">
+                <div class="bg_img">
+                    <img src="./assets/images/youwin_rainbow.png" alt="">
+                </div>
+                <!-- <h2>You Completed the Dish</h2>
+                <button id="play-game">Play Again</button> -->
+
+                <div class="win_buttons">
+                    <a href="./game2.html"><img src="./assets/images/next_level.png" alt=""></a>
+                    <a href="./game1.html"><img src="./assets/images/try_again.png" alt=""></a>
+                    <a href="./index.html"><img class="home" src="./assets/images/home.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <div class="info-panel">
+                <h2>Current Dish: <span id="dish-name"></span></h2>
+                <h3>Required Ingredients:</h3>
+                <ul id="ingredient-list"></ul>
+                <h3>Collected Ingredients:</h3>
+                <ul id="collected-list"></ul>
+                <h3>Score: <span id="score">0</span></h3>
+            </div>
+            <div class="game-area">
+                <div id="basket">
+                    <div class="player">
+                        <img src="./assets/images/player.png" alt="">
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <script src="./script3.js"></script>
+
+</body>
+
+</html>

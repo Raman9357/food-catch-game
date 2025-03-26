@@ -50,11 +50,14 @@
 .play-screen .container .play .buttons a {
   text-decoration: none;
   text-align: center;
-  background-color: #fff;
   padding: 15px;
   border-radius: 12px;
   width: 150px;
   transition: all 0.3s;
+}
+.play-screen .container .play .buttons a img {
+  width: 100%;
+  max-width: 150px;
 }
 @media screen and (max-width: 657px) {
   .play-screen .container .play .buttons a {
@@ -62,6 +65,9 @@
   }
 }
 .play-screen .container .play .buttons a:active {
+  transform: scale(1.2);
+}
+.play-screen .container .play .buttons a:hover {
   transform: scale(1.1);
 }
 
@@ -109,6 +115,10 @@
 }
 .level-screen .container .level .cards .card .image {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .level-screen .container .level .cards .card .image .heading {
   width: 240px;
@@ -120,6 +130,14 @@
   padding: 10px;
   color: #fff;
   border-radius: 10px;
+  text-align: center;
+}
+.level-screen .container .level .cards .card .image .img_heading {
+  width: 240px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
 }
 .level-screen .container .level .cards .card .image img {
